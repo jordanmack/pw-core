@@ -75,8 +75,10 @@ export function ValidateScript(
   assertHash(`${debugPath}.code_hash`, script.code_hash);
   assertHexString(`${debugPath}.args`, script.args);
 
-  if (script.hash_type !== 'data' && script.hash_type !== 'type') {
-    throw new Error(`${debugPath}.hash_type must be either data or type!`);
+  // Validate the hash_type property of the script object
+  const VALID_HASH_TYPES = ['data', 'type', 'data1', 'data2'];
+  if (!script.hash_type || !VALID_HASH_TYPES.includes(script.hash_type)) {
+    throw new Error(`Invalid hash_type: '${script.hash_type}'. It must be one of the following: ${VALID_HASH_TYPES.join(', ')}.`);
   }
 }
 

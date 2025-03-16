@@ -78,6 +78,10 @@ export function NormalizeScript(script, { debugPath = 'script' } = {}) {
           return 0;
         case 'type':
           return 1;
+        case 'data1':
+          return 2;
+        case 'data2':
+          return 4;
         case 0:
           return value;
         case 1:
